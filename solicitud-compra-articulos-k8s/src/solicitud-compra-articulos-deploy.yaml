@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: solicitud-compra-articulos-deployment
+  labels:
+    app: solicitud-compra-articulos
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: solicitud-compra-articulos
+  template:
+    metadata:
+      labels:
+        app: solicitud-compra-articulos
+    spec:
+      containers:
+        - name: container-solicitud-compra-articulos
+          image: genesiscastillo/solicitud-compra-articulos

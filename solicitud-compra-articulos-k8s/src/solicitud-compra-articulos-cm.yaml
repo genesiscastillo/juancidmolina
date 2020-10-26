@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: solicitud-compra-articulos-cm
+  namespace: Sing-In-Dev
+  labels:
+    app: solicitud-compra-articulos
+data:
+  FB_GCP_CLOUD_PROJECTID: "sing-in-dev-284714"
+  FB_GCP_CLOUD_PUBSUB_TOPIC: "testTopic"
+  FB_GCP_CLOUD_PUBSUB_SUBSCRIPTION: "testSubscription"
