@@ -1,0 +1,45 @@
+Historia de usuario 0001
+------------------------
+
+Se requiere un servicio que reciba una solicitud de compra de artículos, revise si existe esa cantidad en un stock y:
+
+*Si no existe, devolver un mensaje indicando que no existe el artículo o que no hay dicha cantidad según corresponda.
+
+*Si existe, almacenar la solicitud en una base de datos (la que consideres más adecuada) y enviar una notificación 
+a una cola de mensajes PubSub de GCP. Luego informar al cliente que el pedido se ha realizado.
+
+el servicio recibirá un json con la siguiente estructura:
+
+{
+    "id_articulo" : "",
+    "cantidad" : "",
+    "precio_unitario" : "",
+    "fecha" : ""
+}
+
+Se requiere además:
+
+*Validación de datos de entrada
+*Archivo de despliegue (Docker, Kubernetes o lo que corresponda)
+*Pruebas
+*Uso de patrones de diseño
+*el mensaje enviado a la cola debe ir codificado en Base64, por ejemplo:
+
+Si los datos del mensaje son 
+
+{
+    "topic": "solicitudes_de_compra",
+    "data": {
+            "id_articulo" : "",
+            "cantidad" : "",
+            "precio_unitario" : "",
+            "fecha" : ""
+        }
+}
+
+subirlos como
+
+{
+    "topic": "solicitudes_de_compra",
+    "data": "ewogICAgICAgICAgICAiaWRfYXJ0aWN1bG8iIDogIiIsCiAgICAgICAgICAgICJjYW50aWRhZCIgOiAiIiwKICAgICAgICAgICAgInByZWNpb191bml0YXJpbyIgOiAiIiwKICAgICAgICAgICAgImZlY2hhIiA6ICIiCn0="
+}
